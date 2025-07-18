@@ -1,0 +1,92 @@
+<div class="dashboard">
+  <!-- Cards Statistiques refondues -->
+
+  <!-- Fin Cards Statistiques -->
+  
+  <!-- Cartes types de fichiers modernes -->
+  <div class="row mb-4">
+    <div class="col-md-3 col-6 mb-3">
+      <div class="stat-card pro-card card-remis">
+        <div class="stat-icon-bg"><i class="ti ti-upload"></i></div>
+        <div>
+          <div class="stat-value">{{ remisCount }}</div>
+          <div class="stat-label">Remis (émis)</div>
+          <div class="stat-desc">Fichiers remis à la banque</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <div class="stat-card pro-card card-recu">
+        <div class="stat-icon-bg"><i class="ti ti-download"></i></div>
+        <div>
+          <div class="stat-value">{{ recuCount }}</div>
+          <div class="stat-label">Reçu</div>
+          <div class="stat-desc">Fichiers reçus de la banque</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <div class="stat-card pro-card card-repris">
+        <div class="stat-icon-bg"><i class="ti ti-refresh"></i></div>
+        <div>
+          <div class="stat-value">{{ reprisCount }}</div>
+          <div class="stat-label">Repris</div>
+          <div class="stat-desc">Remis puis retourné (rejet)</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <div class="stat-card pro-card card-rendu">
+        <div class="stat-icon-bg"><i class="ti ti-share"></i></div>
+        <div>
+          <div class="stat-value">{{ renduCount }}</div>
+          <div class="stat-label">Rendu</div>
+          <div class="stat-desc">Reçu puis renvoyé</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-stretch">
+    <div class="col-xl-8 col-md-12 d-flex flex-column">
+      <app-bar-chart class="flex-grow-1"></app-bar-chart>
+    </div>
+    <div class="col-xl-4 col-md-12 d-flex flex-column">
+      <div class="card flex-grow-1">
+        <div class="card-body">
+          <div class="row mb-3 align-items-center">
+            <div class="col">
+              <h4>Fichiers en attente</h4>
+            </div>
+          </div>
+          <div class="animated-file-list">
+            <ng-container *ngIf="pendingFiles.length > 0; else noPending">
+              <div *ngFor="let list of pendingFiles; let i = index"
+                   class="file-card mb-3 animate__animated file-card-pending"
+                   [style.animationDelay]="(0.1 * i) + 's'">
+                <div class="d-flex align-items-center">
+                  <span class="file-icon me-3"><i class="ti ti-clock"></i></span>
+                  <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">{{ list.name }}</h5>
+                      <span class="badge bg-warning">En attente</span>
+                    </div>
+                    <div class="file-type small text-muted">{{ list.info }}</div>
+                  </div>
+                  <div class="ms-3 text-end">
+                    <div class="file-amount fw-bold">{{ list.amount }}</div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #noPending>
+              <div class="text-center mt-3">
+                <span class="text-muted">Aucun fichier en attente</span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

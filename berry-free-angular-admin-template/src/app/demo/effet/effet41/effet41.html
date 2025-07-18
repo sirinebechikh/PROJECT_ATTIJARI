@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2 class="cheque-title">Liste des fichiers - Effet 41</h2>
+  <div class="table-responsive cheque-table-anim">
+    <table class="table table-modern table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Code EN</th>
+          <th>Code Valeur</th>
+          <th>Date de création</th>
+          <th>Nature du fichier</th>
+          <th>Nom du fichier</th>
+          <th>Sens</th>
+          <th>Type de fichier</th>
+          <th>Date de mise à jour</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fichier of fichiers; let i = index" class="cheque-row-anim" [style.animationDelay]="(0.07 * i) + 's'">
+          <td>{{ fichier.COD_EN }}</td>
+          <td>{{ fichier.CODE_VALEUR }}</td>
+          <td>{{ fichier.CREATED_AT }}</td>
+          <td><span class="badge badge-nature">{{ fichier.NATURE_FICHIER }}</span></td>
+          <td>{{ fichier.NOM_FICHIER }}</td>
+          <td>
+            <span class="badge" [ngClass]="{'badge-sens-emis': fichier.SENS === 'Émis', 'badge-sens-recu': fichier.SENS === 'Reçu'}">{{ fichier.SENS }}</span>
+          </td>
+          <td>
+            <span class="badge badge-type">{{ fichier.TYPE_FICHIER }}</span>
+          </td>
+          <td>{{ fichier.UPDATED_AT }}</td>
+          <td>
+            <button class="btn btn-outline-primary btn-sm me-2" (click)="modifierFichier(fichier)"><i class="ti ti-edit"></i></button>
+            <button class="btn btn-outline-danger btn-sm" (click)="supprimerFichier(fichier)"><i class="ti ti-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

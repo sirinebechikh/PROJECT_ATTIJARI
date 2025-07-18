@@ -1,0 +1,265 @@
+.nav-tabs {
+  border-bottom: none !important;
+}
+body.berry-dark .nav-tabs .nav-link,
+body.berry-dark .tab-content {
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.earning-card {
+  .round {
+    &.secondary-round {
+      background: #4527a0;
+    }
+    &.primary-round {
+      background: #1565c0;
+    }
+  }
+}
+
+.total-income-card {
+  .avatar {
+    background: #1565c0;
+  }
+}
+
+.dashboard-header {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+  padding: 32px 32px 24px 32px;
+  margin-bottom: 32px;
+  position: relative;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    padding-left: 16px;
+    border-left: 5px solid #fbb034; // Orange Attijari
+    color: #fbb034; // Titre orange
+    letter-spacing: -1px;
+  }
+
+  p {
+    color: #6c757d;
+    font-size: 1.15rem;
+    font-style: italic;
+    margin: 0 0 0 16px;
+  }
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 90px;
+  gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+.stat-card:hover {
+  box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+}
+.stat-icon-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+.stat-blue { background: #2196f3; color: #fff; }
+.stat-green { background: #43a047; color: #fff; }
+.stat-red { background: #e53935; color: #fff; }
+.stat-purple { background: #673ab7; color: #fff; }
+.stat-value {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+.stat-label {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  .stat-card {
+    min-height: 70px;
+    padding: 0.7rem 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .stat-icon-bg {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+    margin-right: 0;
+    margin-bottom: 0.3rem;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+  }
+}
+
+.stat-card, .earning-card, .total-income-card, .card {
+  animation: dashboardBounceIn 0.95s cubic-bezier(.22,1.15,.47,1.13);
+  animation-fill-mode: both;
+}
+
+@keyframes dashboardBounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95) skewY(2deg);
+    box-shadow: none;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.04) skewY(-1deg);
+    box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  }
+  80% {
+    transform: translateY(6px) scale(0.98) skewY(0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) skewY(0);
+    box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+  }
+}
+
+// Stagger effect pour les cartes statistiques
+.dashboard .stat-card:nth-child(1) { animation-delay: 0.05s; }
+.dashboard .stat-card:nth-child(2) { animation-delay: 0.18s; }
+.dashboard .stat-card:nth-child(3) { animation-delay: 0.31s; }
+.dashboard .stat-card:nth-child(4) { animation-delay: 0.44s; }
+
+// Hover dynamique
+.stat-card:hover, .earning-card:hover, .total-income-card:hover, .card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+  transition: transform 0.25s cubic-bezier(.22,1.15,.47,1.13), box-shadow 0.25s;
+}
+
+.animated-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.file-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.22s, transform 0.22s;
+  animation: fileFadeInUp 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  opacity: 0.98;
+}
+.file-card:hover {
+  box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+  transform: translateY(-4px) scale(1.025);
+  opacity: 1;
+}
+.file-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f8fafc;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.07);
+}
+.file-card-success .file-icon { background: #e6f9ed; color: #43a047; }
+.file-card-danger .file-icon { background: #ffeaea; color: #e53935; }
+.file-card-type-cheque .file-icon { background: #fffbe6; color: #a85d3b; }
+.file-card-type-virement .file-icon { background: #e3f2fd; color: #2196f3; }
+.file-card-type-effet .file-icon { background: #ede7f6; color: #673ab7; }
+.file-card-type-prlv .file-icon { background: #f3e7e9; color: #e60028; }
+.file-amount { font-size: 1.1rem; color: #222; }
+.badge.bg-success { background: linear-gradient(90deg, #43a047 0%, #b2f2d7 100%); color: #222; font-weight: 600; }
+.badge.bg-danger { background: linear-gradient(90deg, #e60028 0%, #ffd6d6 100%); color: #222; font-weight: 600; }
+@keyframes fileFadeInUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+  60% { opacity: 0.7; transform: translateY(-8px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.pro-card {
+  min-height: 170px;
+  height: 100%;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    transform: translateY(-2px) scale(1.02);
+  }
+  .stat-icon-bg {
+    font-size: 2.5rem;
+    border-radius: 50%;
+    padding: 1rem;
+    background: #f5f5f5;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .stat-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  .stat-desc {
+    font-size: 0.95rem;
+    color: #888;
+    margin-top: 0.2rem;
+  }
+}
+.card-remis .stat-icon-bg { background: #e3f0ff; color: #1976d2; }
+.card-recu .stat-icon-bg { background: #e6f7e6; color: #388e3c; }
+.card-repris .stat-icon-bg { background: #fff4e3; color: #f57c00; }
+.card-rendu .stat-icon-bg { background: #f3e6ff; color: #7c4dff; }
+
+.card.fichiers-emis-rejetes {
+  max-height: 420px;
+  overflow: hidden;
+}
+.card .animated-file-list {
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dashboard {
+  overflow-x: auto;
+}
+
+.row.align-items-stretch {
+  align-items: stretch !important;
+}
+.col-xl-8, .col-xl-4 {
+  display: flex;
+  flex-direction: column;
+}
